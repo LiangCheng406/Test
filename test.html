@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .parent-element {
+      width: 400px;
+      height: 400px;
+      font-size: 10px;
+      border: 1px solid #000;
+    }
+
+    .fontVw {
+      width: 30vw;
+      height: 30vh;
+      background-color: aqua;
+      font-size: 1rem;
+    }
+
+    .font-test {
+      font-size: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent-element">
+    我是父元素字体大小
+    <div class="fontVw">根据根元素调整字体大小</div>
+
+    <div class="font-test">根据父元素调整字体大小</div>
+  </div>
+</body>
+
+</html>

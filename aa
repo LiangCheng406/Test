@@ -1,0 +1,466 @@
+{
+  "VideoTracks": [
+    {
+      "VideoTrackClips": [
+        {
+          "Type": "GlobalImage",
+          "MediaURL": "https://qw-juzhen-clip.oss-cn-beijing.aliyuncs.com/video/202408/19/f7fb4dfcfdc406a580856a20e5677d13.jpg"
+        }
+      ]
+    },
+    {
+      "VideoTrackClips": [
+        {
+          "MediaURL": "$MediaURL2",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip1",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL3",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip2",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL4",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip3",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL5",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip4",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL6",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip5",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL7",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip6",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL8",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip7",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL9",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip8",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL10",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip9",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL11",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip10",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        },
+        {
+          "MediaURL": "$MediaURL12",
+          "Type": "Image",
+          "In": "0.0",
+          "ReferenceClipId": "clip11",
+          "X": 0,
+          "Y": 0.24,
+          "Height": 0.5,
+          "Width": 1,
+          "Out": "2"
+        }
+      ],
+      "MainTrack": true
+    }
+  ],
+  "AudioTracks": [
+    {
+      "AudioTrackClips": [
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip1",
+          "Content": "$Content1",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip2",
+          "Content": "$Content2",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip3",
+          "Content": "$Content3",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip4",
+          "Content": "$Content4",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip5",
+          "Content": "$Content5",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip6",
+          "Content": "$Content6",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip7",
+          "Content": "$Content7",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip8",
+          "Content": "$Content8",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip9",
+          "Content": "$Content9",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip10",
+          "Content": "$Content10",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        },
+        {
+          "Type": "AI_TTS",
+          "ClipId": "clip11",
+          "Content": "$Content11",
+          "Effects": [
+            {
+              "Type": "AI_ASR",
+              "Alignment": "TopCenter",
+              "FontSize": 50,
+              "OutlineColour": "#000080",
+              "EffectColorStyle": "CS0003-000007",
+              "FontColor": "#000000",
+              "Y": 0.77,
+              "Outline": 2,
+              "AdaptMode": "AutoWrap",
+              "TextWidth": 0.8,
+              "Font": "Alibaba PuHuiTi"
+            },
+            {
+              "Type": "Volume",
+              "Gain": "3"
+            }
+          ],
+          "SpeechRate": "$SpeechRate",
+          "Voice": "kenny"
+        }
+      ]
+    },
+    {
+      "AudioTrackClips": [
+        {
+          "MediaURL": "$MediaURL13",
+          "Effects": [
+            {
+              "Type": "Volume",
+              "Gain": "$Gain"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SubtitleTracks": [
+    {
+      "SubtitleTrackClips": [
+        {
+          "Type": "Text",
+          "Font": "Alibaba PuHuiTi",
+          "Content": "$Content0",
+          "AdaptMode": "AutoWrap",
+          "FontSize": 45,
+          "FontColor": "#000000",
+          "Y": 0.145,
+          "Alignment": "TopCenter",
+          "EffectColorStyle": "CS0003-000007",
+          "Ratio": 1,
+          "FontFace": {
+            "Bold": true,
+            "Italic": false,
+            "Underline": false
+          }
+        }
+      ]
+    }
+  ]
+}

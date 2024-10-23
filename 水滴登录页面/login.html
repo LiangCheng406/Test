@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 初始样式+body样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #eff0f4;
+    }
+
+    .box {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin: 230px auto;
+      width: 470px;
+    }
+
+    /* fiex布局 */
+    .box .content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 350px;
+      height: 350px;
+      padding: 60px 20px;
+      box-shadow:
+        inset 20px 20px 20px rgba(0, 0, 0, .05),
+        25px 35px 20px rgba(0, 0, 0, .05),
+        25px 30px 30px rgba(0, 0, 0, .05),
+        inset -20px -20px 25px rgba(255, 255, 255, .9);
+      transition: .5s;
+      border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+    }
+
+    .box .content:hover {
+      border-radius: 50%;
+    }
+
+    /* 内容容器的高亮气泡1 */
+    .box .content::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: 85px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.9;
+    }
+
+    /* 内容容器的高亮气泡2 */
+    .box .content::after {
+      content: '';
+      position: absolute;
+      top: 90px;
+      left: 110px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #fff;
+      opacity: 0.9;
+    }
+
+    /* 表单容器的圆角和阴影 */
+    .box .content div {
+      position: relative;
+      width: 225px;
+      border-radius: 25px;
+      box-shadow:
+        inset 20px 5px 10px rgba(0, 0, 0, .1),
+        inset -2px -5px 10px rgba(255, 255, 255, 1),
+        15px 15px 10px rgba(0, 0, 0, .05),
+        15px 10px 15px rgba(0, 0, 0, .025);
+    }
+
+    /* 设置表单控件样式 */
+    .box .content div input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+      padding: 10px 15px;
+
+    }
+
+    .box .content input[type="submit"] {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* 表单容器样式和hover效果 */
+    .box .content div:last-child {
+      width: 120px;
+      background-color: #ff0f5b;
+      transition: .5s;
+      box-shadow:
+        inset 2px 5px 10px rgba(0, 0, 0, .1),
+        15px 15px 10px rgba(0, 0, 0, .05),
+        15px 10px 15px rgba(0, 0, 0, .025);
+    }
+
+    .box .content div:last-child:hover {
+      width: 150px;
+    }
+
+    /* 添加表单容器高亮 */
+    .box .content div::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65px;
+      height: 5px;
+      background: rgba(255, 255, 255, .5);
+      border-radius: 5px;
+    }
+
+    /* 设置忘记密码按钮样式 */
+    .btns {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      width: 120px;
+      height: 120px;
+      background: #c61dff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+
+      border-radius: 46% 56% 65% 35% / 57% 58% 42% 43%;
+      box-shadow:
+        inset 10px 10px 10px rgba(190, 1, 254, .05),
+        15px 25px 10px rgba(190, 1, 254, .1),
+        15px 20px 20px rgba(190, 1, 254, .1),
+        inset -10px -10px 15px rgba(255, 255, 255, .5);
+    }
+
+    /* 设置注册按钮样式+阴影 */
+    .register {
+      right: 0px;
+      bottom: 150px;
+      width: 80px;
+      height: 80px;
+      background: #01b4ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 49% 51% 52% 48% / 63% 59% 41% 37%;
+      box-shadow:
+        inset 10px 10px 10px rgba(1, 180, 255, .05),
+        15px 25px 10px rgba(1, 180, 255, .1),
+        15px 20px 20px rgba(1, 180, 255, .1),
+        inset -10px -10px 15px rgba(255, 255, 255, .5);
+    }
+
+    .btns {
+      /* 添加过渡时间 */
+      transition: 0.25s;
+    }
+
+    /* 设置按钮hover变圆 */
+    .btns:hover {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="content">
+      <h2>登录</h2>
+      <div><input type="text" placeholder="请输入用户名"></div>
+      <div><input type="password" placeholder="请输入密码"></div>
+      <div><input type="submit" value="登录"></div>
+    </div>
+    <a href="#" class="btns">忘记密码</a>
+    <a href="#" class="btns register">注册</a><strong></strong>
+  </div>
+</body>
+
+</html>

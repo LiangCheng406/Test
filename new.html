@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 80%;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .biaoge {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .biaoge th,
+    .biaoge td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .biaoge th {
+      background-color: #f2f2f2;
+    }
+
+    .form-controls {
+      text-align: right;
+    }
+
+    .form-controls button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <form id="form">
+      <table class="biaoge">
+        <tr>
+          <td>原料入库</td>
+        </tr>
+        <tr>
+          <td>订单状态：
+            <select id="orderStatus">
+              <option>--请选择--</option>
+              <option>未入库</option>
+              <option>等待入库</option>
+              <option>已入库</option>
+            </select>
+          </td>
+          <td>入库单号：
+            <input type="text" id="entryNumber">
+          </td>
+          <td>入库时间：
+            <label for="date">选择日期:</label>
+            <input type="date" id="entryDate">
+          </td>
+          <td>原料名称：
+            <input type="text" id="materialName">
+          </td>
+        </tr>
+        <tr>
+          <td>原料编号：
+            <input type="text" id="materialNumber">
+          </td>
+          <td>批次号:
+            <input type="text" id="batchNumber">
+          </td>
+          <td>入库仓库:
+            <input type="text" id="warehouse">
+          </td>
+          <td>入库类型:
+            <select id="entryType">
+              <option>--请选择--</option>
+              <option>采购入库</option>
+              <option>退货入库</option>
+              <option>其他入库</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>入库方式：
+            <select id="entryMethod">
+              <option>--请选择--</option>
+              <option>手工入库</option>
+              <option>自动入库</option>
+              <option>条码入库</option>
+            </select>
+          </td>
+          <td>供应商:
+            <input type="text" id="supplier">
+          </td>
+          <td>生产商:
+            <input type="text" id="manufacturer">
+          </td>
+          <td>下单时间:
+            <input type="date" id="orderDate">
+          </td>
+        </tr>
+      </table>
+      <div class="form-controls">
+        <button type="button" onclick="addEntry()">添加</button>
+        <button type="button" onclick="updateEntry()">更新</button>
+        <button type="button" onclick="deleteEntry()">删除</button>
+      </div>
+    </form>
+    <table class="biaoge" id="entriesTable">
+      <thead>
+        <tr>
+          <th>订单状态</th>
+          <th>入库单号</th>
+          <th>入库时间</th>
+          <th>原料名称</th>
+          <th>原料编号</th>
+          <th>批次号</th>
+          <th>入库仓库</th>
+          <th>入库类型</th>
+          <th>入库方式</th>
+          <th>供应商</th>
+          <th>生产商</th>
+          <th>下单时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="entriesBody">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    let selectedRow = null;
+
+    function addEntry() {
+      const form = document.getElementById('form');
+      const table = document.getElementById('entriesBody');
+      const newRow = table.insertRow();
+
+      newRow.insertCell(0).innerText = form.orderStatus.value;
+      newRow.insertCell(1).innerText = form.entryNumber.value;
+      newRow.insertCell(2).innerText = form.entryDate.value;
+      newRow.insertCell(3).innerText = form.materialName.value;
+      newRow.insertCell(4).innerText = form.materialNumber.value;
+      newRow.insertCell(5).innerText = form.batchNumber.value;
+      newRow.insertCell(6).innerText = form.warehouse.value;
+      newRow.insertCell(7).innerText = form.entryType.value;
+      newRow.insertCell(8).innerText = form.entryMethod.value;
+      newRow.insertCell(9).innerText = form.supplier.value;
+      newRow.insertCell(10).innerText = form.manufacturer.value;
+      newRow.insertCell(11).innerText = form.orderDate.value;
+      const actionsCell = newRow.insertCell(12);
+      actionsCell.innerHTML = '<button onclick="editEntry(this)">编辑</button> <button onclick="deleteEntry(this)">删除</button>';
+      form.reset();
+    }
+
+
+    function editEntry(button) {
+      selectedRow = button.parentElement.parentElement;
+      const form = document.getElementById('form');
+      form.orderStatus.value = selectedRow.cells[0].innerText;
+      form.entryNumber.value = selectedRow.cells[1].innerText;
+      form.entryDate.value = selectedRow.cells[2].innerText;
+      form.materialName.value = selectedRow.cells[3].innerText;
+      form.materialNumber.value = selectedRow.cells[4].innerText;
+      form.batchNumber.value = selectedRow.cells[5].innerText;
+      form.warehouse.value = selectedRow.cells[6].innerText;
+      form.entryType.value = selectedRow.cells[7].innerText;
+      form.entryMethod.value = selectedRow.cells[8].innerText;
+      form.supplier.value = selectedRow.cells[9].innerText;
+      form.manufacturer.value = selectedRow.cells[10].innerText;
+      form.orderDate.value = selectedRow.cells[11].innerText;
+    }
+
+    function updateEntry() {
+      if (selectedRow) {
+        const form = document.getElementById('form');
+        selectedRow.cells[0].innerText = form.orderStatus.value;
+        selectedRow.cells[1].innerText = form.entryNumber.value;
+        selectedRow.cells[2].innerText = form.entryDate.value;
+        selectedRow.cells[3].innerText = form.materialName.value;
+        selectedRow.cells[4].innerText = form.materialNumber.value;
+        selectedRow.cells[5].innerText = form.batchNumber.value;
+        selectedRow.cells[6].innerText = form.warehouse.value;
+        selectedRow.cells[7].innerText = form.entryType.value;
+        selectedRow.cells[8].innerText = form.entryMethod.value;
+        selectedRow.cells[9].innerText = form.supplier.value;
+        selectedRow.cells[10].innerText = form.manufacturer.value;
+        selectedRow.cells[11].innerText = form.orderDate.value;
+        form.reset();
+        selectedRow = null;
+      }
+    }
+
+    function deleteEntry(button) {
+      if (button) {
+        const row = button.parentElement.parentElement;
+        document.getElementById('entriesBody').deleteRow(row.rowIndex - 1);
+      } else if (selectedRow) {
+        document.getElementById('entriesBody').deleteRow(selectedRow.rowIndex - 1);
+        selectedRow = null;
+        document.getElementById('form').reset();
+      }
+    }
+  </script>
+</body>
+
+</html>

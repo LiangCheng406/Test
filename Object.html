@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建一个任务对象
+        const task = {
+            id: 1,
+            title: "完成Object对象的学习",
+            type: "常规任务",
+            priority: "高",
+            dueDate: "2024-08-10"
+        }
+        console.log("特定任务属性", task)
+        //查找指定的任务属性
+        console.log(task.id);
+        //新增一个对象
+        console.log(task.feat = 'learn', task);
+        //删除一个对象
+        console.log(delete task.id, task)
+        //筛选除过type其余的属性(方法一)遍历数组构造一个新的对象
+        const screen = Object.keys(task).reduce((acc, key) => {
+            if (key !== 'type') {
+                acc[key] = task[key];
+            }
+            return acc;
+        }, {})
+        console.log('除过type其余的属性')
+        console.log(screen)
+        //筛选除过type其余的属性(方法二)使用filter过滤
+        /* 获取对象的所有键值对：
+           Object.entries(task) 会返回一个数组，数组中的每个元素是一个键值对的数组。       
+           过滤键值对：
+           使用 filter 方法过滤掉键为 "title" 的键值对。
+           将键值对转换回对象：
+           使用 Object.fromEntries 方法将过滤后的键值对数组转换回一个对象。 */
+        const filterTask = Object.fromEntries(
+            Object.entries(task).filter(([key, value]) => key !== 'type')
+        );
+        console.log(filterTask)
+        //for...in 循环：遍历对象的所有可枚举属性。
+        for (let key in task) {
+            if (task.hasOwnProperty(key)) {
+                console.log(`${key}: ${task[key]}`);
+            }
+        }
+        Object.keys(task).forEach(key => {
+            console.log(`${key}: ${task[key]}`);
+        });
+        //获取对象里面所有的值
+        Object.values(task).forEach(value => {
+            console.log("获取值", value);
+        });
+        /* //Object.assign：将一个或多个源对象的属性分配到目标对象中。（合并对象）
+        const additionalInfo = { status: "未完成", assignedTo: "张三" };
+        const updatedTask = Object.assign({}, task, additionalInfo);
+        console.log(updatedTask); */
+
+        // 使用展开运算符合并对象
+        const additionalInfo = { status: "未完成", assignedTo: "张三" };
+        const updatedTask = { ...task, ...additionalInfo };
+        console.log(updatedTask);
+        // Object.assign：浅拷贝对象。
+        const clone = Object.assign({}, task, task.ll = '789')
+        console.log(clone)
+        /*  const filterText = Object.fromEntries(
+             Object.entries(task).filter(([key,value])=>key !=='title')
+         )  */
+
+
+
+    </script>
+</body>
+
+</html>
