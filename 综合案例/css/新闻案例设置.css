@@ -1,0 +1,31 @@
+body {
+    font: 16px/35px 'Microsoft YaHei';
+}
+h1 {
+    text-align: center;
+    font-weight: 400;
+}
+.daohang {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+}
+a {
+    text-decoration: none;
+}
+.pic {
+    text-align: center;
+}
+.but {
+    font-weight: 700;
+}
+.sousu {
+    color: #666;
+}
+p {
+    text-indent: 2em;
+}
+.footer {
+    color: #888;
+    font-size: 12px;
+}
