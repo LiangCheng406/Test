@@ -8,11 +8,11 @@ def batch_rename_files(input_folder, output_folder, new_name):
         os.makedirs(output_folder)
 
     # 定义允许的字符（包括连字符）
-    allowed_characters = re.compile(r'^[\w\u4e00-\u9fa5\s\-]+$')  # 允许连字符
+    allowed_characters = re.compile(r'^[\w\u4e00-\u9fa5\s\-]+$')  # 允许字母、数字、汉字、空格和连字符
 
     # 定义不允许的特殊字符
-    disallowed_characters = r'[?\\/*|":<>]'  # 使用方括号定义字符集
-    max_length = 255
+    disallowed_characters = r'[?\\/*|":<>]'  # 使用方括号定义不允许的字符foundFileName.py集
+    max_length = 255  # 文件名最大长度限制
 
     # 获取所有文件
     files = [f for f in os.listdir(input_folder) if os.path.isfile(os.path.join(input_folder, f))]
@@ -22,11 +22,12 @@ def batch_rename_files(input_folder, output_folder, new_name):
         # 拆分文件名和后缀
         file_base, file_ext = os.path.splitext(file_name)
 
-        # 检查文件名是否符合规则
+        # 检查文件名长度
         if len(file_base) > max_length:
             print(f"文件名 '{file_name}' 超过最大长度限制 ({max_length} 个字符)")
             continue
 
+        # 检查文件名是否符合规则
         if not allowed_characters.match(file_base):
             # 提取文件名中不允许的符号
             invalid_chars = ''.join(set(re.findall(disallowed_characters, file_base)))
@@ -48,8 +49,8 @@ def batch_rename_files(input_folder, output_folder, new_name):
     print(f"所有符合要求的文件已重命名并保存到 {output_folder} ！")
 
 # 示例用法
-input_folder_path = r"D:\桌面\余华\图片"
-output_folder_path = r"D:\桌面\余华\图片\output"
-new_name = "图片_"  # 文件名称
+input_folder_path = r"D:\桌面\百草\20241026-1101\20241022_DOUYIN_WW\识百草"  # 输入文件夹路径
+output_folder_path = r"D:\桌面\百草\20241026-1101\20241022_DOUYIN_WW\识百草11" # 输出文件夹路径
+new_name = "百草"  # 新文件名的前缀
 
 batch_rename_files(input_folder_path, output_folder_path, new_name)
