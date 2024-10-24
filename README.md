@@ -13,7 +13,7 @@
 1. **设置文件夹路径**：在代码中，将 `folder_path` 变量设置为你要检查的文件夹的路径。
 
     ```python
-    folder_path = r"你本地文件夹路径"
+     folder_path = r"你本地文件夹路径"
     ```
 
 2. **输出文件路径**：可以选择输出文件的名称和路径，默认为 `foundNameNumber.json`。
@@ -109,3 +109,11 @@
    ```bash
       pip install tqdm
 
+# pillow_img.py
+## Python脚本：批量裁剪图片
+
+此Python脚本使用 `PIL` 库对文件夹中的图片进行批量裁剪，并将裁剪后的图片保存到指定的输出文件夹中。
+
+```bash
+python pillow_img.py D:\pycharm\img-text  D:\pycharm\output 0 0 896 506
+```
