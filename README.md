@@ -107,5 +107,5 @@
    在命令行中执行以下命令，安装 Python 的 `tqdm` 库：
 
    ```bash
-   python video_cropper.py
+      pip install tqdm
 
