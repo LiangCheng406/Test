@@ -1,8 +1,21 @@
 import os
 import subprocess
-from tqdm import tqdm  # 引入进度条库
+from tqdm import tqdm
+import logging
+from concurrent.futures import ThreadPoolExecutor
 
-def crop_to_resolution(input_folder, output_folder, target_resolution):
+# 配置日志记录
+logging.basicConfig(filename='logs/video_processing.log', level=logging.ERROR,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+def crop_to_resolution(input_folder, output_folder, target_resolution, num_workers=4):
+    """
+    批量裁剪视频至指定分辨率，并行处理
+    :param input_folder: 输入文件夹
+    :param output_folder: 输出文件夹
+    :param target_resolution: 目标分辨率，如 "1920:1080"
+    :param num_workers: 并行处理的线程数量
+    """
     # 确保输出文件夹存在
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -10,13 +23,16 @@ def crop_to_resolution(input_folder, output_folder, target_resolution):
     # 获取文件夹中的所有视频文件
     video_files = [f for f in os.listdir(input_folder) if f.lower().endswith(('.mp4', '.avi', '.mkv', '.mov', '.flv'))]
 
-    # 分析目标分辨率
-    target_width, target_height = map(int, target_resolution.split(':'))
+    # 检查目标分辨率格式是否正确
+    try:
+        target_width, target_height = map(int, target_resolution.split(':'))
+    except ValueError:
+        raise ValueError("目标分辨率格式不正确，请使用 'width:height' 格式，例如 '1920:1080'")
 
-    # 使用 tqdm 增加处理进度条
-    for video_file in tqdm(video_files, desc="Processing videos"):
+    # 定义处理视频的函数
+    def process_video(video_file):
         input_path = os.path.join(input_folder, video_file)
-        output_path = os.path.join(output_folder, video_file)
+        output_path = os.path.join(output_folder, os.path.splitext(video_file)[0] + '.mp4')  # 统一输出为 .mp4 文件
 
         # 获取原始视频的宽高
         try:
@@ -41,12 +57,12 @@ def crop_to_resolution(input_folder, output_folder, target_resolution):
             # 使用 ffmpeg 命令裁切视频并确保生成的文件可以正常播放
             command = [
                 'ffmpeg',
-                '-i', input_path,  # 输入文件
-                '-vf', f'crop={crop_width}:{crop_height}:0:0,scale={target_width}:{target_height}',  # 裁切并缩放
-                '-c:v', 'libx264',  # 使用 libx264 编码器
-                '-crf', '23',  # 压缩质量参数，数值越低质量越高
-                '-c:a', 'copy',  # 保持音频编码不变
-                '-movflags', 'faststart',  # 修复 moov atom
+                '-i', input_path,
+                '-vf', f'crop={crop_width}:{crop_height}:0:0,scale={target_width}:{target_height}',
+                '-c:v', 'libx264',
+                '-crf', '23',
+                '-c:a', 'copy',
+                '-movflags', 'faststart',
                 output_path
             ]
 
@@ -54,17 +70,20 @@ def crop_to_resolution(input_folder, output_folder, target_resolution):
             subprocess.run(command, check=True)
 
         except subprocess.CalledProcessError as e:
-            print(f"处理视频 {video_file} 时出错: {str(e)}")
+            logging.error(f"处理视频 {video_file} 时出错: {str(e)}")
         except Exception as e:
-            print(f"处理视频 {video_file} 时发生未预期的错误: {str(e)}")
+            logging.error(f"处理视频 {video_file} 时发生未预期的错误: {str(e)}")
+
+    # 使用 tqdm 显示进度条并并行处理
+    with ThreadPoolExecutor(max_workers=num_workers) as executor:
+        list(tqdm(executor.map(process_video, video_files), total=len(video_files), desc="Processing videos"))
 
     print("所有视频处理成功！")
 
 
 # 示例用法
-input_folder_path = r"D:\桌面\百草\20241102-1108\10.22百草视频\10.22百草视频"
-output_folder_path = r"D:\桌面\百草\20241102-1108\唱百草"
-target_resolution = "1920:1082"  # 目标分辨率
+input_folder_path = r"D:\桌面\百草\20241102-1108\测试11"
+output_folder_path = r"D:\桌面\百草\20241102-1108\output"
+target_resolution = "1920:1080"  # 目标分辨率
 
-crop_to_resolution(input_folder_path, output_folder_path, target_resolution)
-
+crop_to_resolution(input_folder_path, output_folder_path, target_resolution, num_workers=4)
