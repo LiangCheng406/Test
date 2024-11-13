@@ -77,8 +77,8 @@ def process_videos_in_parallel(input_folder, output_folder, rotation_angle, max_
 
 if __name__ == "__main__":
     # 设置输入输出文件夹路径
-    input_folder = r"D:\桌面\国画\国画素材\0925"  # 输入文件夹路径
-    output_folder = r"D:\桌面\国画\国画素材\09251"  # 输出文件夹路径
+    input_folder = r"D:\桌面\国画\11月国画未剪辑\output"  # 输入文件夹路径
+    output_folder = r"D:\桌面\国画\11月国画未剪辑\output_"  # 输出文件夹路径
 
     # 设置旋转角度（可以根据需求调整）
     rotation_angle = 180  # 旋转角度，例如 90°、180° 或 270°
