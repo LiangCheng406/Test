@@ -4,41 +4,67 @@ import glob
 import math
 
 # 设置视频文件夹路径
-video_folder = r"D:\桌面\教辅\1213"  # 替换为你的视频文件夹路径
-output_folder = "D:\桌面\教辅\Output"  # 替换为保存帧的文件夹路径
-# 用户输入指定的秒数和帧数
-duration = 5  # 例如 5
-total_frames = 10  # 例如 10
+video_folder = r"D:\桌面\餐饮店铺\日常素材"
+output_folder = r"D:\桌面\餐饮店铺\output"
 
-# 计算每秒的帧数
-frame_rate = math.ceil(total_frames / duration)  # 向上取整，保证足够的帧数
+# 用户输入指定的秒数和帧数
+duration = None  # None 表示使用整个视频长度
+total_frames = 20  # 希望抽取的总帧数
 
 # 创建输出文件夹（如果不存在）
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 # 获取视频文件夹中的所有视频文件
-video_files = glob.glob(os.path.join(video_folder, "*.mp4"))  # 可以根据需要扩展支持的格式
+video_files = glob.glob(os.path.join(video_folder, "*.mp4"))
+
+
+def get_video_duration(video_path):
+    """使用 ffprobe 获取视频时长（单位：秒）"""
+    cmd = [
+        'ffprobe', '-v', 'error',
+        '-show_entries', 'format=duration',
+        '-of', 'default=noprint_wrappers=1:nokey=1',
+        video_path
+    ]
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    try:
+        return float(result.stdout.strip())
+    except ValueError:
+        return None
+
 
 # 遍历每个视频文件进行抽帧
 for video_file in video_files:
-    # 获取视频文件名（不包括扩展名）
     video_name = os.path.basename(video_file).split('.')[0]
-
-    # 设置输出帧文件夹
     video_output_folder = os.path.join(output_folder, video_name)
     if not os.path.exists(video_output_folder):
         os.makedirs(video_output_folder)
 
-    # 使用FFmpeg抽帧，限制时间为duration秒，并按frame_rate抽帧
+    # 获取当前视频时长（如果未指定 duration）
+    video_duration = get_video_duration(video_file)
+    use_duration = duration if duration is not None else video_duration
+
+    if use_duration is None:
+        print(f"无法获取视频时长: {video_file}")
+        continue
+
+    # 计算每秒需要的帧数
+    frame_rate = math.ceil(total_frames / use_duration)
+
+    # 构造 FFmpeg 命令
     cmd = [
         'ffmpeg', '-i', video_file,
-        '-t', str(duration),  # 限制抽帧的时间（前duration秒）
-        '-vf', f'fps={frame_rate}',  # 设置帧率
-        os.path.join(video_output_folder, '%04d.png')  # 设置输出格式和路径
     ]
 
-    # 执行命令
+    if duration is not None:
+        cmd += ['-t', str(duration)]
+
+    cmd += [
+        '-vf', f'fps={frame_rate}',
+        os.path.join(video_output_folder, '%04d.png')
+    ]
+
     subprocess.run(cmd)
 
 print("指定秒数和帧数的抽帧完成！")
