@@ -4,19 +4,22 @@ import glob
 import math
 
 # 设置视频文件夹路径
-video_folder = r"D:\桌面\餐饮店铺\日常素材"
+video_folder = r"D:\桌面\餐饮店铺\dfb048884ee61f5002f9b38967bf3576"
 output_folder = r"D:\桌面\餐饮店铺\output"
 
 # 用户输入指定的秒数和帧数
 duration = None  # None 表示使用整个视频长度
-total_frames = 20  # 希望抽取的总帧数
+total_frames = 10  # 希望抽取的总帧数
 
 # 创建输出文件夹（如果不存在）
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 # 获取视频文件夹中的所有视频文件
-video_files = glob.glob(os.path.join(video_folder, "*.mp4"))
+video_extensions = ["*.mp4", "*.mov", "*.avi", "*.mkv"]
+video_files = []
+for ext in video_extensions:
+    video_files.extend(glob.glob(os.path.join(video_folder, ext)))
 
 
 def get_video_duration(video_path):
@@ -49,22 +52,21 @@ for video_file in video_files:
         print(f"无法获取视频时长: {video_file}")
         continue
 
-    # 计算每秒需要的帧数
+    # 计算每秒需要的帧数，保证抽取 total_frames 张以内
     frame_rate = math.ceil(total_frames / use_duration)
 
     # 构造 FFmpeg 命令
-    cmd = [
-        'ffmpeg', '-i', video_file,
-    ]
+    cmd = ['ffmpeg', '-i', video_file]
 
     if duration is not None:
         cmd += ['-t', str(duration)]
 
     cmd += [
         '-vf', f'fps={frame_rate}',
+        '-frames:v', str(total_frames),  # 限制最多抽取 total_frames 张
         os.path.join(video_output_folder, '%04d.png')
     ]
 
     subprocess.run(cmd)
 
-print("指定秒数和帧数的抽帧完成！")
+print("抽帧完成，每个视频最多抽取指定帧数！")
