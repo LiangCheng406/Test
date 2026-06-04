@@ -40,10 +40,10 @@ def batch_trim_videos(input_folder, output_folder, start_time, duration=None):
             trim_video(input_video_path, output_video_path, start_time, duration)
 
 # 设置输入和输出文件夹路径
-input_folder = r'D:\桌面\教辅\单作品解析\单作品解析\视频作品'  # 输入文件夹路径，替换为你的实际路径
-output_folder = r'D:\桌面\教辅\单作品解析\视频作品'  # 输出文件夹路径，替换为你的实际路径
+input_folder = r'D:\桌面\加油站素材\实拍\input'  # 输入文件夹路径，替换为你的实际路径
+output_folder = r'D:\桌面\加油站素材\实拍\output'  # 输出文件夹路径，替换为你的实际路径
 
 # 批量裁剪
-start_time = 0.3  # 裁剪的起始时间
-duration = None    # 设置为 None，如果希望裁剪到视频结束
+start_time = 10# 裁剪的起始时间
+duration = None  # 设置为 None，如果希望裁剪到视频结束
 batch_trim_videos(input_folder, output_folder, start_time, duration)

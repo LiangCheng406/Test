@@ -45,8 +45,8 @@ def batch_rename_files(input_folder, output_folder, new_name):
     print(f"所有符合要求的文件已重命名并保存到 {output_folder} ！")
 
 # 示例用法
-input_folder_path = r"D:\桌面\宝妈\炒菜视频"  # 输入文件夹路径
-output_folder_path = r"D:\桌面\宝妈\炒菜视频1"  # 输出文件夹路径
-new_name = "百草"  # 新文件名的前缀
+input_folder_path = r"D:\桌面\01视频素材\20211418815670886400210玲姐-投流-30\makevideo\202602\10\2021141881567088640" # 输入文件夹路径
+output_folder_path = r"D:\桌面\01视频素材\output" # 输出文件夹路径
+new_name = ""  # 新文件名的前缀
 
 batch_rename_files(input_folder_path, output_folder_path, new_name)

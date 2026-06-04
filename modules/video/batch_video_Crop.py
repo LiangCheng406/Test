@@ -4,13 +4,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
 # ========== 配置部分 ==========
-input_folder = r"D:\桌面\延长石化\河津耿都\河津耿都"  # 输入文件夹路径
-output_folder = r"D:\桌面\延长石化\河津耿都"   # 输出文件夹路径（建议不要和输入一样）
+input_folder = r"D:\桌面\加油站素材\input"  # 输入文件夹路径
+output_folder = r"D:\桌面\加油站素材\input_trimmed_20250714_215915"   # 输出文件夹路径（建议不要和输入一样）
 
 x = 0    # 裁剪起始X坐标
-y = 0     # 裁剪起始Y坐标
-width = 720  # 裁剪宽度
-height = 863 # 裁剪高度
+y = 200    # 裁剪起始Y坐标
+width = 1080  # 裁剪宽度
+height = 1800 # 裁剪高度
 threads = 4  # 并行线程数
 
 # ========== 裁剪函数 ==========

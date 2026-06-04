@@ -37,7 +37,7 @@ def delete_folders_by_name(root_dir, target_name):
 
 if __name__ == "__main__":
     # 指定目标文件夹
-    target_folder = r"D:\桌面\素材1\素材1\素材1"
+    target_folder = r"D:\桌面\素材2\素材2"
 
     # 设置要匹配的文件夹名称关键字
     target_folder_name = "低于480包括480"

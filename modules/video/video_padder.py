@@ -71,8 +71,8 @@ def batch_convert_videos(input_folder, output_folder, max_processes=4):
 
 if __name__ == "__main__":
     # 输入和输出文件夹路径
-    input_folder = r"D:\桌面\教辅\教辅一组\1220"  # 替换为您的输入文件夹路径
-    output_folder = r"D:\桌面\教辅\单作品解析\作品"  # 替换为您的输出文件夹路径
+    input_folder = r"D:\桌面\测试文件夹\input"  # 替换为您的输入文件夹路径
+    output_folder = r"D:\桌面\测试文件夹\output"  # 替换为您的输出文件夹路径
 
     # 批量转换，最多使用 4 个进程
     batch_convert_videos(input_folder, output_folder, max_processes=4)

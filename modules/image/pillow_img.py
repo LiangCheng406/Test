@@ -9,7 +9,7 @@ from multiprocessing import Pool
 sys.stdout.reconfigure(encoding='utf-8')
 
 # 配置日志记录
-logging.basicConfig(filename='logs/image_processing.log', level=logging.INFO,
+logging.basicConfig(filename='../../logs/image_processing.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def validate_crop_area(crop_area, image_size):

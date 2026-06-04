@@ -21,7 +21,7 @@ def adjust_video_properties(input_folder, output_folder):
         os.makedirs(output_folder)
 
     # 获取所有视频文件
-    video_files = [f for f in os.listdir(input_folder) if f.endswith(('.MP4', '.avi', '.mkv', '.mov'))]
+    video_files = [f for f in os.listdir(input_folder) if f.endswith(('.mp4', '.avi', '.mkv', '.mov'))]
 
     if not video_files:
         logging.warning("没有找到支持的视频文件。")
@@ -68,8 +68,8 @@ def adjust_video_properties(input_folder, output_folder):
 
 
 # 输入与输出文件夹路径
-input_folder = r"D:\桌面\作文模板有一套" # 替换为您的输入文件夹路径
-output_folder = r"D:\桌面\教辅111"  # 替换为您的输出文件夹路径
+input_folder = r"D:\桌面\高赞视频\input" # 替换为您的输入文件夹路径
+output_folder = r"D:\桌面\高赞视频\Onput"  # 替换为您的输出文件夹路径
 
 # 执行视频处理
 adjust_video_properties(input_folder, output_folder)
