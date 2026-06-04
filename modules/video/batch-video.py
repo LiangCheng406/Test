@@ -5,7 +5,7 @@ import logging
 from concurrent.futures import ThreadPoolExecutor
 
 # 配置日志记录
-logging.basicConfig(filename='logs/video_processing.log', level=logging.ERROR,
+logging.basicConfig(filename='../../logs/video_processing.log', level=logging.ERROR,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def crop_to_resolution(input_folder, output_folder, target_resolution, num_workers=4):
@@ -82,8 +82,8 @@ def crop_to_resolution(input_folder, output_folder, target_resolution, num_worke
 
 
 # 示例用法
-input_folder_path = r"D:\桌面\百草\20241102-1108\测试11"
-output_folder_path = r"D:\桌面\百草\20241102-1108\output"
-target_resolution = "1920:1080"  # 目标分辨率
+input_folder_path = r"D:\桌面\01视频素材\单作品解析\视频作品\处理"
+output_folder_path = r"D:\桌面\01视频素材\单作品解析\视频作品\output"
+target_resolution = "1080:1920"  # 目标分辨率
 
 crop_to_resolution(input_folder_path, output_folder_path, target_resolution, num_workers=4)
