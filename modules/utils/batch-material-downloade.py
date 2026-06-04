@@ -32,22 +32,34 @@ def download_file(url, folder_path, file_name):
         print(f"下载文件时出错: {file_name}，错误: {str(e)}")
 
 # 批量下载视频和图片
-def download_resources(data, target_folder):
+def download_resources(data, target_folder, max_count=None):
+    """
+    批量下载资源，支持限制下载数量。
+    :param data: 数据
+    :param target_folder: 下载目标文件夹
+    :param max_count: 每个书名下载的最大数量，None 表示下载全部
+    """
     if not data or not isinstance(data, dict):
         print("数据为空或格式不正确，跳过当前任务。")
         return
 
     if 'data' in data and 'material' in data['data']:
         create_folder(target_folder)
+        count = 0  # 计数器
         for material in data['data']['material']:
             if 'list' in material:
                 for item in material['list']:
+                    if max_count is not None and count >= max_count:  # 达到限制数量则退出
+                        print(f"已达到最大下载数量 {max_count}，跳过剩余资源。")
+                        return
+
                     mid = item.get('mid', 'unknown_id')
                     url = item.get('url', '')
                     if url:
                         file_extension = url.split('.')[-1]
                         file_name = f"{mid}.{file_extension}"
                         download_file(url, target_folder, file_name)
+                        count += 1  # 增加计数
                     else:
                         print(f"未找到 URL 对于 {mid}")
             else:
@@ -120,8 +132,8 @@ def read_book_titles_from_excel(file_path, sheet_name='Sheet1', column_name='书
 # 主函数：遍历书名并执行下载
 def main():
     # 定义 Excel 文件路径和下载路径
-    file_path = r"D:\桌面\新建 XLSX 工作表.xlsx"
-    target_base_folder =r"D:\桌面\1128"  # 自定义的下载文件夹路径
+    file_path = r"D:\桌面\新建 Microsoft Excel 工作表.xlsx"
+    target_base_folder = r"D:\桌面\VR游戏\输出"  # 自定义的下载文件夹路径
 
     # 获取书名数组
     book_titles = read_book_titles_from_excel(file_path)
@@ -141,7 +153,8 @@ def main():
             print(f"未能获取数据，跳过: {text}")
             continue
 
-        download_resources(data, target_folder)
+        # 下载资源并限制每个书名的下载数量
+        download_resources(data, target_folder, max_count=None)  # max_count=None 表示下载全部
 
 # 执行主函数
 if __name__ == "__main__":
